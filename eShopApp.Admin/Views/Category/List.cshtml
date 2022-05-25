@@ -1,0 +1,45 @@
+﻿@model IEnumerable<eShopApp.Admin.Models.CategoryViewModel>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Category List</h1>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["Message"]
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Kategori Adı</th>
+            <th>Açıklama</th>
+            <th>Resim</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CategoryName</td>
+                <td>@item.Description</td>
+                <td>
+                    <img style="width:10%" src="data:image;base64, @item.PictureStr" />
+                </td>
+                <td>
+                    <a href="/category/edit/@item.Id">Düzenle</a> |
+                    <a href="/category/delete/@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Add">Yeni Kategori Ekle</a>
+</div>

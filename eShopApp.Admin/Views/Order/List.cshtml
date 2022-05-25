@@ -1,0 +1,52 @@
+﻿@model IEnumerable<eShopApp.Admin.Models.OrderViewModel>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@if (TempData["Message"] != null)
+{
+<div class="alert alert-info">
+    @TempData["Message"]
+</div>}
+
+
+<h1>List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.OrderDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShipAddress)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.OrderDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShipAddress)
+                </td>
+               
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { item.Id}) |
+                    @Html.ActionLink("Delete", "Delete", new { item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

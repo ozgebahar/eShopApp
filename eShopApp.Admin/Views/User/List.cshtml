@@ -1,0 +1,46 @@
+﻿@model IEnumerable<eShopApp.Admin.Models.UserViewModel>
+
+@{
+    ViewData["Title"] = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-info">
+        @TempData["Message"]
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Adı</th>
+            <th>Soyadı</th>
+            <th>Email</th>
+            <th>Rol</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Firstname</td>
+                <td>@item.Lastname</td>
+                <td>@item.Email</td>
+                <td>@item.Role</td>
+                <td>
+                    <a href="/user/edit/@item.Id">Düzenle</a> |
+                    <a href="/user/delete/@item.Id">Sil</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

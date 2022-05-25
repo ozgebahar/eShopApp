@@ -1,0 +1,39 @@
+﻿@model IndexViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                <h2>Best Sellers</h2>
+            </div>
+        </div>
+        @foreach (var item in Model.Categories)
+        {
+            <div class="row row-pb-md">
+                <div class="col-lg-3 mb-4 text-center">
+                    <div class="product-entry border">
+                        <a href="#" class="prod-img">
+                            <img src="data:image;base64,@item.PictureStr" class="img-fluid" alt="Free html5 bootstrap 4 template">
+                        </a>
+                        <div class="desc">
+                            <h2><a href="#">@item.CategoryName</a></h2>
+                            <a href="/product/list/@item.Id" class="btn karl-btn" >Tıkla</a>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="w-100"></div>
+
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p><a href="/product/list" class="btn btn-primary btn-lg">Shop All Products</a></p>
+            </div>
+        </div>
+    </div>
+</div>
